@@ -1,0 +1,26 @@
+- name: Hello World
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Stampa Hello World
+      ansible.builtin.debug:
+        msg: "Hello World"
+
+
+#schemaVersion: '2.2'
+#description: "Installa Python 3"
+#mainSteps:
+#  - action: aws:runShellScript
+#    name: installPython
+#    inputs:
+#      runCommand:
+#        - |
+#          if [ -f /etc/os-release ]; then
+#            . /etc/os-release
+#            if [[ "$ID" == "amzn" || "$ID_LIKE" == *"amazon"* ]]; then
+#              sudo yum update -y
+#              sudo yum install -y python3
+#            fi
+#          fi
