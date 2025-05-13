@@ -26,18 +26,14 @@
 #          fi
 
 
-- name: Installazione Git e aggiornamento pacchetti
+- name: Installa Git su Amazon Linux
   hosts: localhost
   connection: local
   gather_facts: false
-  become: true  # <--- Importante per usare sudo
+  become: true
 
   tasks:
-    - name: Aggiorna l'elenco dei pacchetti (apt update)
-      ansible.builtin.apt:
-        update_cache: yes
-
-    - name: Installa git
-      ansible.builtin.apt:
+    - name: Installa Git
+      ansible.builtin.yum:
         name: git
         state: present
