@@ -1,12 +1,12 @@
-- name: Hello World
-  hosts: localhost
-  connection: local
-  gather_facts: false
-
-  tasks:
-    - name: Stampa Hello World
-      ansible.builtin.debug:
-        msg: "Hello World"
+#- name: Hello World
+#  hosts: localhost
+#  connection: local
+#  gather_facts: false
+#
+#  tasks:
+#    - name: Stampa Hello World
+#      ansible.builtin.debug:
+#        msg: "Hello World"*/
 
 
 #schemaVersion: '2.2'
@@ -24,3 +24,20 @@
 #              sudo yum install -y python3
 #            fi
 #          fi
+
+
+- name: Installazione Git e aggiornamento pacchetti
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  become: true  # <--- Importante per usare sudo
+
+  tasks:
+    - name: Aggiorna l'elenco dei pacchetti (apt update)
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Installa git
+      ansible.builtin.apt:
+        name: git
+        state: present
